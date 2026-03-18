@@ -19,7 +19,7 @@ export default function SectionWrapper({
   return (
     <motion.section
       id={id}
-      className={`px-6 py-20 md:py-28 ${className}`}
+      className={`scroll-mt-20 px-6 py-20 md:py-28 ${className}`}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}

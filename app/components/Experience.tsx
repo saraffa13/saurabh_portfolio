@@ -78,12 +78,14 @@ export default function Experience() {
               <div className="rounded-xl border border-zinc-200 bg-white p-6 transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700">
                 <div className="flex items-start gap-4">
                   {/* Company logo */}
-                  <div className="relative hidden h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-zinc-200 bg-white dark:border-zinc-700 sm:block">
+                  <div className="hidden h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-zinc-200 bg-white dark:border-zinc-700 sm:block">
                     <Image
                       src={exp.logo}
                       alt={`${exp.company} logo`}
-                      fill
-                      className="object-cover"
+                      width={48}
+                      height={48}
+                      className="h-full w-full object-cover"
+                      quality={100}
                     />
                   </div>
 

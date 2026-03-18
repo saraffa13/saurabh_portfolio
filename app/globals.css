@@ -8,7 +8,7 @@
 }
 
 .dark {
-  --background: #0a0a0a;
+  --background: #050505;
   --foreground: #ededed;
 }
 
@@ -52,4 +52,80 @@ html {
 /* Selection color */
 ::selection {
   background-color: rgb(139 92 246 / 0.3);
+}
+
+/* Animated gradient blobs */
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -50px) scale(1.1); }
+  50% { transform: translate(-20px, 20px) scale(0.9); }
+  75% { transform: translate(20px, 40px) scale(1.05); }
+}
+
+@keyframes blob-reverse {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-30px, 40px) scale(0.95); }
+  50% { transform: translate(25px, -30px) scale(1.1); }
+  75% { transform: translate(-15px, -20px) scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-blob {
+  animation: blob 8s ease-in-out infinite;
+}
+
+.animate-blob-reverse {
+  animation: blob-reverse 10s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 4s ease infinite;
+}
+
+/* Glow effect for dark mode */
+.glow-violet {
+  box-shadow: 0 0 60px -12px rgb(139 92 246 / 0.4);
+}
+
+.dark .glow-violet {
+  box-shadow: 0 0 80px -12px rgb(139 92 246 / 0.3);
+}
+
+/* Grid pattern background */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(0 0 0 / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(0 0 0 / 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.dark .bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
