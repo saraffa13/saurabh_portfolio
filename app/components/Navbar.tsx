@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Moon, Sun, Menu, X, Download } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 import { useState, useEffect } from "react";
 
@@ -53,6 +53,14 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <a
+            href="/saurabh_resume.pdf"
+            download
+            className="inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-violet-700 hover:shadow-md hover:shadow-violet-500/25"
+          >
+            <Download size={14} />
+            Resume
+          </a>
           <button
             onClick={toggleTheme}
             className="rounded-full p-2 text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
@@ -64,6 +72,14 @@ export default function Navbar() {
 
         {/* Mobile controls */}
         <div className="flex items-center gap-2 md:hidden">
+          <a
+            href="/saurabh_resume.pdf"
+            download
+            className="rounded-full p-2 text-violet-600 transition-colors hover:bg-violet-50 dark:text-violet-400 dark:hover:bg-violet-500/10"
+            aria-label="Download resume"
+          >
+            <Download size={18} />
+          </a>
           <button
             onClick={toggleTheme}
             className="rounded-full p-2 text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
@@ -100,6 +116,15 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+            <a
+              href="/saurabh_resume.pdf"
+              download
+              onClick={() => setMobileOpen(false)}
+              className="inline-flex items-center gap-2 text-sm font-medium text-violet-600 dark:text-violet-400"
+            >
+              <Download size={14} />
+              Download Resume
+            </a>
           </div>
         </motion.div>
       )}

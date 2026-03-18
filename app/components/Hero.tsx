@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, MapPin, Briefcase } from "lucide-react";
+import { ArrowDown, MapPin, Briefcase, Download } from "lucide-react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -186,6 +186,14 @@ export default function Hero() {
                 className="inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-white/50 px-7 py-3.5 text-sm font-medium text-zinc-700 backdrop-blur-sm transition-all hover:border-violet-300 hover:bg-violet-50 dark:border-zinc-700 dark:bg-zinc-900/50 dark:text-zinc-300 dark:hover:border-violet-500/30 dark:hover:bg-violet-500/10"
               >
                 Get in touch
+              </a>
+              <a
+                href="/saurabh_resume.pdf"
+                download
+                className="inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-white/50 px-7 py-3.5 text-sm font-medium text-zinc-700 backdrop-blur-sm transition-all hover:border-violet-300 hover:bg-violet-50 dark:border-zinc-700 dark:bg-zinc-900/50 dark:text-zinc-300 dark:hover:border-violet-500/30 dark:hover:bg-violet-500/10"
+              >
+                <Download size={15} />
+                Download Resume
               </a>
             </motion.div>
           </div>
