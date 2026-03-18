@@ -2,8 +2,50 @@
 
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import { useEffect, useState } from "react";
+
+const roles = [
+  "Sales Professional",
+  "Market Representative",
+  "Pharma Expert",
+  "Team Player",
+];
+
+function useTypingAnimation(words: string[], typingSpeed = 80, deletingSpeed = 50, pauseDuration = 1500) {
+  const [displayText, setDisplayText] = useState("");
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = words[wordIndex];
+
+    const timeout = setTimeout(
+      () => {
+        if (!isDeleting) {
+          setDisplayText(currentWord.slice(0, displayText.length + 1));
+          if (displayText.length + 1 === currentWord.length) {
+            setTimeout(() => setIsDeleting(true), pauseDuration);
+          }
+        } else {
+          setDisplayText(currentWord.slice(0, displayText.length - 1));
+          if (displayText.length === 0) {
+            setIsDeleting(false);
+            setWordIndex((prev) => (prev + 1) % words.length);
+          }
+        }
+      },
+      isDeleting ? deletingSpeed : typingSpeed
+    );
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDuration]);
+
+  return displayText;
+}
 
 export default function Hero() {
+  const typedText = useTypingAnimation(roles);
+
   return (
     <section className="relative flex min-h-screen items-center justify-center px-6">
       {/* Grain overlay */}
@@ -36,10 +78,23 @@ export default function Hero() {
           </span>
         </motion.h1>
 
+        {/* Typing animation */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+          className="mt-4 flex h-10 items-center justify-center"
+        >
+          <span className="font-serif text-2xl text-zinc-500 dark:text-zinc-400 md:text-3xl">
+            {typedText}
+          </span>
+          <span className="ml-0.5 inline-block h-8 w-[2px] animate-pulse bg-violet-500 md:h-9" />
+        </motion.div>
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
           className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400 md:text-xl"
         >
           A results-driven market representative with 2.5+ years of experience
@@ -50,7 +105,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          transition={{ duration: 0.5, delay: 1.0 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <a
@@ -73,7 +128,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
+          transition={{ duration: 0.5, delay: 1.4 }}
           className="mt-20"
         >
           <a

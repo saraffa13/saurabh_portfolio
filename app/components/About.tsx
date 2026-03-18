@@ -2,12 +2,13 @@
 
 import SectionWrapper from "./SectionWrapper";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function About() {
   return (
     <SectionWrapper id="about">
       <div className="grid gap-12 md:grid-cols-2 md:items-center">
-        {/* Avatar placeholder */}
+        {/* Profile photo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -15,10 +16,14 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="flex justify-center"
         >
-          <div className="relative h-72 w-72 overflow-hidden rounded-2xl bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 dark:from-violet-500/10 dark:to-fuchsia-500/10">
-            <div className="absolute inset-0 flex items-center justify-center text-6xl font-bold text-violet-500/40">
-              S
-            </div>
+          <div className="relative h-72 w-72 overflow-hidden rounded-2xl bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 shadow-lg dark:from-violet-500/10 dark:to-fuchsia-500/10">
+            <Image
+              src="/saurabh.jpg"
+              alt="Saurabh Kumar Jaiswal"
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
         </motion.div>
 

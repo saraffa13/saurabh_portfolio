@@ -2,12 +2,22 @@
 
 import SectionWrapper from "./SectionWrapper";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const experiences = [
   {
     role: "Market Representative",
+    company: "Mankind Healthcare",
+    period: "Sep 2025 — Dec 2025",
+    logo: "/mankind.jpeg",
+    description:
+      "Promoted healthcare products across the assigned territory. Engaged with doctors, chemists, and medical professionals to drive brand awareness and achieve sales targets.",
+  },
+  {
+    role: "Market Representative",
     company: "Intas Pharmaceutical",
     period: "1.5 Years",
+    logo: "/intas.jpeg",
     description:
       "Promoted pharmaceutical products to doctors, chemists, and healthcare professionals. Managed territory sales, built strong client relationships, and consistently met monthly targets.",
   },
@@ -15,6 +25,7 @@ const experiences = [
     role: "Market Representative",
     company: "Shri Nivas Gujarat Pvt Ltd",
     period: "1 Year",
+    logo: "/srinavas.jpeg",
     description:
       "Handled product detailing and promotion in the assigned market area. Developed new business contacts, managed retail partnerships, and drove product awareness across the territory.",
   },
@@ -65,22 +76,36 @@ export default function Experience() {
               <div className="absolute left-0 top-2 hidden h-4 w-4 rounded-full border-2 border-violet-500 bg-white dark:bg-zinc-950 md:block md:left-[1.625rem]" />
 
               <div className="rounded-xl border border-zinc-200 bg-white p-6 transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700">
-                <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <h3 className="font-semibold text-zinc-900 dark:text-white">
-                      {exp.role}
-                    </h3>
-                    <p className="text-sm text-violet-600 dark:text-violet-400">
-                      {exp.company}
+                <div className="flex items-start gap-4">
+                  {/* Company logo */}
+                  <div className="relative hidden h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-zinc-200 bg-white dark:border-zinc-700 sm:block">
+                    <Image
+                      src={exp.logo}
+                      alt={`${exp.company} logo`}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  <div className="flex-1">
+                    <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                      <div>
+                        <h3 className="font-semibold text-zinc-900 dark:text-white">
+                          {exp.role}
+                        </h3>
+                        <p className="text-sm text-violet-600 dark:text-violet-400">
+                          {exp.company}
+                        </p>
+                      </div>
+                      <span className="text-sm text-zinc-500 dark:text-zinc-500">
+                        {exp.period}
+                      </span>
+                    </div>
+                    <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                      {exp.description}
                     </p>
                   </div>
-                  <span className="text-sm text-zinc-500 dark:text-zinc-500">
-                    {exp.period}
-                  </span>
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                  {exp.description}
-                </p>
               </div>
             </motion.div>
           ))}
